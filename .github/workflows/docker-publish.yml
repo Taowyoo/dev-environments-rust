@@ -40,7 +40,7 @@ jobs:
         id: rust_version
         run: |
           OUTPUT=$(curl -s -X GET -H "Cache-Control: no-cache" https://api.github.com/repos/rust-lang/rust/releases | python3 -c "import sys, json; print(json.load(sys.stdin)[0]['tag_name'])") &&
-          echo "::set-output name=OUTPUT::$OUTPUT" && echo ${OUTPUT}
+          echo "::set-output name=OUTPUT::$OUTPUT" && echo "latest rust version: ${OUTPUT}"
       -
         if: steps.check.outputs.OUTPUT == 0
         name: Build and push
@@ -49,4 +49,4 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: bittwilight/dev-environments-rust:${{ steps.check.rust_version.OUTPUT }}
+          tags: bittwilight/dev-environments-rust:${{ steps.rust_version.outputs.OUTPUT }}
