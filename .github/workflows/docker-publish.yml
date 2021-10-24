@@ -9,6 +9,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
       -
         name: Check if rust-lang/docker-rust updated in last 1 day
         id: check
