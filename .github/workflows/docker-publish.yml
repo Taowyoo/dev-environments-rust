@@ -40,7 +40,7 @@ jobs:
         id: rust_version
         run: |
           OUTPUT=$(curl -s -X GET -H "Cache-Control: no-cache" https://api.github.com/repos/rust-lang/rust/releases | python3 -c "import sys, json; print(json.load(sys.stdin)[0]['tag_name'])") &&
-          echo "::set-output name=OUTPUT::$OUTPUT"
+          echo "::set-output name=OUTPUT::$OUTPUT" && echo ${OUTPUT}
       -
         if: steps.check.outputs.OUTPUT == 0
         name: Build and push
