@@ -1,3 +1,3 @@
 # dev-environments-rust
 
-Simply modifed docker/dev-environments-default to install rust toolchain by using rustup
+Based on docker/dev-environments-default, install rust toolchain by using https://sh.rustup.rs
