@@ -23,3 +23,7 @@ RUN rustup --version; \
 COPY test_cargo test_cargo
 RUN cd test_cargo && cargo run
 RUN rm -rf test_cargo
+
+USER vscode
+WORKDIR /home/vscode
+ENTRYPOINT [ "/bin/zsh" ]
